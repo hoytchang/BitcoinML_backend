@@ -8,5 +8,5 @@ urlpatterns = [
     path('hashrate', views.hashRate, name='hashrate'),
     path('ntransactions', views.nTransactions, name='ntransactions'),
     path('nuniqueaddresses', views.nUniqueAddresses, name='nuniqueaddresses'),
-    path('predict', views.predict, name='predict'),
+    path('predict/<model_settings>', views.predict, name='predict'),
 ]

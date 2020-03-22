@@ -2,6 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from rest_framework.decorators import api_view
 import os
 import json
+from ML.Predict import Model
 
 def index(request):
     return HttpResponse("Hello, world.")
@@ -34,6 +35,8 @@ def nUniqueAddresses(request):
     return JsonResponse(read_json('n-unique-addresses'))
 
 @api_view()
-def predict(request):
-    # TODO: build a ML model and make some predictions
-    return HttpResponse("predict")
+def predict(request, model_settings):
+    model = Model(model_settings)
+    model.build_model()
+    prediction = model.predict()
+    return HttpResponse("predict = " + str(prediction))
